@@ -1,0 +1,27 @@
+/* User Register Form */
+
+.profile {
+    display: block;
+    max-width: 300px;
+    margin: 150px auto 50px auto;
+}
+
+.profile label {
+  color: #afafaf;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile p {
+    display: inline;
+}
+
+.profile .checkbox {
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
+}
+
+.profile button {
+  margin-top: 28px;
+}

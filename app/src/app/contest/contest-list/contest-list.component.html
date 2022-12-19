@@ -1,0 +1,33 @@
+<div *ngIf="errorFetcingData">Error loading contests</div>
+<app-loader *ngIf="!contests"></app-loader>
+<section class="photos-videos">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-heading text-center">
+          <h6>Photos &amp; Videos At TopShot</h6>
+          <h4>Our Featured <em>Photos &amp; Videos</em> At SnapX</h4>
+        </div>
+      </div>
+      <div class="col-lg-4" *ngFor="let contest of contests">
+        <a href="/contest/detail/{{contest._id}}">
+          <div class="item">
+            <div class="thumb">
+              <img src="{{ contest.titleImg }}" alt="" />
+              <div class="top-content">
+                <h4>{{ contest.title }}</h4>
+              </div>
+            </div>
+            <div class="down-content">
+              <div class="row">
+                <div class="col-5">
+                  <h6>Category: {{ contest.category }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

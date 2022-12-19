@@ -1,0 +1,66 @@
+<app-loader *ngIf="!contest"></app-loader>
+<div class="page-heading" style="background-image: url({{ contest.titleImg }})">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 header-text">
+        <h2 class="space-need">{{ contest.title }}</h2>
+        <h6>Contest Deadline</h6>
+        <div class="main-content">
+          <div class="counter">
+            <div>
+              <div class="value">
+                {{ contest.endDate | date : "YYYY, MMMM, dd" }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contest-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="top-content">
+          <div class="row">
+            <ul>
+              <li>
+                <i class="fa fa-medal"></i> <span>Award:</span> ${{
+                  contest.prize
+                }}
+              </li>
+              <li><span>Participants:</span> {{ contest.participants }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="gallery">
+        <ng-container *ngFor="let photo of photos">
+          <span class="photo-box">
+            <img [src]="photo.photoUrl" />
+            <div class="like-box">
+              <a
+                [routerLink]=""
+                (click)="likePhotoHandler($event)"
+                class="like"
+                id="{{ photo._id }}"
+                >Like</a
+              >
+            </div>
+          </span>
+        </ng-container>
+      </div>
+      <div class="col-lg-12">
+        <div class="main-content">
+          <div class="main-button">
+            <a href="/contest/detail/{{ contest._id }}/add-photo"
+              >Submit Your Photo</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

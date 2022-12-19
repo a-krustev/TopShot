@@ -1,0 +1,43 @@
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <nav class="main-nav">
+                  <!-- ***** Logo Start ***** -->
+                  <a href="index.html" class="logo">
+                      <img src="assets/images/logo.png" alt="SnapX Photography Template">
+                  </a>
+                  <!-- ***** Logo End ***** -->
+                  <!-- ***** Menu Start ***** -->
+                  <ul class="nav">
+                      <li><a routerLink="/">Home</a></li>
+                      <li><a routerLink="/contest/list">Contests</a></li>
+                      <li><a routerLink="/categories">Categories</a></li>
+                      <li *ngIf="isLoggedIn"><a routerLink="/contest/new">New Contest</a></li>
+                  </ul>
+                  <ng-template #loggedOutTemplate>
+                    <div class="border-button">
+                        <a id="modal_trigger" routerLink="/auth/login" class="sign-in-up"><i class="fa fa-user"></i> Login</a>
+                      </div>
+                  </ng-template>
+            
+                  <ng-template #loggedInTemplate>
+                    <div class="border-button">
+                        <a routerLink="/auth/profile"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <a id="modal_trigger" routerLink="/auth/logout" class="sign-in-up">Logout</a>
+                      </div>
+                  </ng-template>
+            
+                  <ng-container *ngTemplateOutlet="isLoggedIn ? loggedInTemplate : loggedOutTemplate"></ng-container>
+                  
+                  <a class='menu-trigger'>
+                      <span>Menu</span>
+                  </a>
+                  <!-- ***** Menu End ***** -->
+              </nav>
+          </div>
+      </div>
+  </div>
+</header>
+<!-- ***** Header Area End ***** -->

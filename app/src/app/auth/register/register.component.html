@@ -1,0 +1,76 @@
+<form #form="ngForm" class="user_register" (ngSubmit)="registerHandler(form)">
+
+  <fieldset>
+    <h2>Registration Form</h2>
+
+    <!-- email -->
+    <p class="field field-icon">
+      <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+      <input type="email"  ngModel #emailInput="ngModel" required email="true" id="email" placeholder="email" name="email">
+    </p>
+    <ng-container *ngIf="emailInput.touched">
+      <p class="error" *ngIf="emailInput.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="emailInput.errors?.['email']">
+        Email is not valid!
+      </p>
+    </ng-container>
+
+
+    <!-- username -->
+    <p class="field field-icon">
+      <label for="username"><span><i class="fas fa-user"></i></span></label>
+      <input class="input-error" type="text" ngModel #usernameInput="ngModel" required minlength="5" maxlength="15" pattern="^[a-z_0-9]{5,15}" id="username" placeholder="username" name="username">
+    </p>
+    <ng-container *ngIf="usernameInput.touched">
+      <p class="error" *ngIf="usernameInput.errors?.['required']">
+        Username is required!
+      </p>
+      <p class="error" *ngIf="usernameInput.errors?.['minlength']">
+        Username must be between 5 and 15 characters!
+      </p>
+      <p class="error" *ngIf="usernameInput.errors?.['maxlength']">
+        Username must be between 5 and 15 characters!
+      </p>
+      <p class="error" *ngIf="usernameInput.errors?.['pattern']">
+        Username must contain only lowercase letters, numbers and underline(_)
+      </p>
+    </ng-container>
+
+    <!-- password -->
+    <ng-container ngModel #passInput="ngModel">
+      <p class="field field-icon">
+        <label for="password"><span><i class="fas fa-lock"></i></span></label>
+        <input type="password" ngModel #passwordInput="ngModel" required minlength="6" id="password" placeholder="******" name="password">
+      </p>
+      <ng-container *ngIf="passwordInput.touched">
+        <p class="error" *ngIf="passwordInput.errors?.['required']">
+          Password is required!
+        </p>
+        <p class="error" *ngIf="passwordInput.errors?.['minlength']">
+          Password must be at least 6 characters!
+        </p>
+      </ng-container>
+
+      <!-- rePassword -->
+      <p class="field field-icon">
+        <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
+        <input type="password" ngModel #rePasswordInput="ngModel" id="rePassword" placeholder="******" name="rePassword">
+      </p>
+    
+    <ng-container *ngIf="rePasswordInput.touched">
+      <p class="error" *ngIf="rePasswordInput.errors?.['sameValueGroupValidator']">
+        Repeat Password does not match password!
+      </p>
+    </ng-container>
+  </ng-container>
+    <button [disabled]="form.invalid">Create Account</button>
+
+    <p class="text-center">
+      Have an account?
+      <a routerLink="/auth/login">Log In</a>
+    </p>
+
+  </fieldset>
+</form>

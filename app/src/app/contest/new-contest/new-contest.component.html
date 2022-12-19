@@ -1,0 +1,76 @@
+<form #form="ngForm" class="new_contest" (ngSubmit)="newContestHandler(form)">
+  <fieldset>
+    <h2>New Contest</h2>
+    <div class="new-contest-title">
+      <label for="contestTitle">Title <span class="red">*</span></label>
+      <input type="text" name="contestTitle" #titleInput="ngModel" ngModel required id="contestTitle" />
+
+      <ng-container *ngIf="titleInput.touched">
+        <p class="error" *ngIf="titleInput.errors?.['required']">
+          Title is required.
+        </p><br>
+      </ng-container>
+    </div>
+
+
+    <label for="titleImg">Contest image<span class="red">*</span></label>
+    <input type="text" name="titleImg" #titleImgInput="ngModel" ngModel required pattern="^https?:\/\/.*" id="titleImg" />
+    <ng-container *ngIf="titleImgInput.touched">
+      <p class="error" *ngIf="titleImgInput.errors?.['required']">
+        Image url is required.
+      </p>
+      <p class="error" *ngIf="titleImgInput.errors?.['pattern']">
+        Image url must start with http:// or https://
+      </p><br>
+    </ng-container>
+    
+
+    <label for="category">Category<span class="red">*</span></label>
+    <select id="category" #categoryInput="ngModel" ngModel required name="category">
+      <option value="nature">Nature</option>
+      <option value="architecture">Architecture</option>
+      <option value="portrait">Portrait</option>
+      <option value="sport">Sport</option>
+      <option value="macro">Macro</option>
+    </select>
+    <ng-container *ngIf="categoryInput.touched">
+      <p class="error" *ngIf="categoryInput.errors?.['required']">
+        Category is required.
+      </p><br>
+    </ng-container>
+
+
+    <label for="prize">Prize<span class="red">*</span></label>
+    <input type="number" id="prize" #prizeInput="ngModel" ngModel required name="prize" min="50" step="10">
+    <ng-container *ngIf="prizeInput.touched">
+      <p class="error" *ngIf="prizeInput.errors?.['required']">
+        Prize is required.
+      </p><br>
+    </ng-container>
+
+
+    <label for="prize">Start date<span class="red">*</span></label>
+    <input type="date" id="startDate" #startDateInput="ngModel" ngModel required name="startDate">
+    <ng-container *ngIf="startDateInput.touched">
+        <p class="error" *ngIf="startDateInput.errors?.['required']">
+          Start date is required.
+        </p><br>
+      </ng-container>
+
+
+      <label for="prize">End date<span class="red">*</span></label>
+      <input type="date" id="endDate" #endDateInput="ngModel" ngModel required name="endDate">
+      <ng-container *ngIf="endDateInput.touched">
+          <p class="error" *ngIf="endDateInput.errors?.['required']">
+            Start date is required.
+          </p>
+        </ng-container>
+
+    <div class="new-contest-buttons">
+      <button class="cancel" type="button" routerLink="/contest/recent">
+        Cancel
+      </button>
+      <button class="public" [disabled]="form.invalid">Post</button>
+    </div>
+  </fieldset>
+</form>

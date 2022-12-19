@@ -1,0 +1,30 @@
+  <form [formGroup]="form" class="profile">
+    <img src="/assets/images/profile.png" alt="default user">
+
+    <h3 class="label">User Info:</h3>
+    <div class="flex">
+      <p>Username: </p>
+      <p>
+        <ng-container>
+          {{user.username}}
+        </ng-container>
+      </p>
+    </div>
+    <div class="flex">
+      <p>Email: </p>
+      <p>
+        <ng-container>
+          {{user.email}}
+        </ng-container>
+      </p>
+    </div>
+    <div class="flex">
+      <p>You participate in </p>
+      <p>
+        <ng-container>
+          {{user.contestParticipates}}
+        </ng-container>
+      </p>
+      <p> contests</p>
+    </div>
+  </form>

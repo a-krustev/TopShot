@@ -1,0 +1,45 @@
+<!-- ***** Main Banner Area Start ***** -->
+<div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="header-text">
+            <h2>Enter a world of <em>Photos</em> &amp; Amazing <em>Awards</em></h2>
+            <p>TopShot Photography is a professional website for photography contests</p>
+            <div class="buttons">
+              <div class="big-border-button">
+                <a href="/contests">Explore TopShot Contest</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Main Banner Area End ***** -->
+
+<div *ngIf="errorFetcingData">Error loading contests</div>
+<app-loader *ngIf="!contests"></app-loader>
+<section class="featured-items" id="featured-items">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-features owl-carousel" style="position: relative; z-index: 5;">
+            <div class="owl-stage-outer">
+                <div *ngFor="let contest of contests" class="item">
+                <div class="thumb">
+                    <img src="{{contest.titleImg}}" alt="">
+                    <div class="hover-effect">
+                    <div class="content">
+                        <h4>{{contest.title}}</h4>
+                        <span><b>Category:</b> {{contest.category}}</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

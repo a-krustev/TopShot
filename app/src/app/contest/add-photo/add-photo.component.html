@@ -1,0 +1,23 @@
+<app-loader *ngIf="!contest"></app-loader>
+<form #form="ngForm" class="new_photo" (ngSubmit)="addPhotoHandler(form)">
+    <fieldset>
+      <h2>Submit Photo to {{contest.title}} contest</h2>  
+  
+      <label for="contestImg">Contest image<span class="red">*</span></label>
+      <input type="text" name="contestImg" #contestImgInput="ngModel" ngModel required pattern="^https?:\/\/.*" id="contestImg" />
+      <ng-container *ngIf="contestImgInput.touched">
+        <p class="error" *ngIf="contestImgInput.errors?.['required']">
+          Image url is required.
+        </p>
+        <p class="error" *ngIf="contestImgInput.errors?.['pattern']">
+          Image url must start with http:// or https://
+        </p><br>
+      </ng-container>
+      
+  
+      <div class="new-contest-buttons">
+        <button class="public" [disabled]="form.invalid">Submit</button>
+      </div>
+    </fieldset>
+  </form>
+  

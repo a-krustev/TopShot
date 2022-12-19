@@ -1,0 +1,45 @@
+/* User Register Form */
+
+.new_photo {
+    display: block;
+    max-width: 700px;
+    margin: 150px auto 50px auto;
+}
+
+.new_photo label {
+  color: #afafaf;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.new_photo input[type="text"],
+.new_photo input[type="email"],
+.new_photo input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  color: #666;
+}
+
+.new_photo input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  float: left;
+  margin-right: 8px;
+}
+
+.new_photo input[type="checkbox"]+label {
+  float: left;
+  color: #afafaf;
+}
+
+.new_photo .checkbox {
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
+}
+
+.new_photo button {
+  margin-top: 28px;
+}
